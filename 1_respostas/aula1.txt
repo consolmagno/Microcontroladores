@@ -1,6 +1,9 @@
 1. São computadores completos utlizados para um propósito pré-defenido dependendo da aplicação desejada.
-2. Os microprocessados fazem parte dos microcontroladores. Dessa forma, são responsáveis pelas realizações das instruções de um sistema de processadores disponíveis ao sistema operacional.
+2. Os microprocessados fazem parte dos microcontroladores. Dessa forma, são responsáveis pelas realizações das instruções de um sistema embarcado. Os microprocesadores realizam diversos tipos de comunicações durante a sua operação, das quais podem ser internas ao chip (busca de instruções ou dados) ou Externas (Armazenamento de dados coletados , sistema processador + memória e entre processadores). 
 3.a) Motor, multimídia, vidros elétricos, farol, controlador de parabrisas e o acionamento de airbag.
   b) Microondodas, maquina de lavar, geladeira e maquina de secar.
   c)Instrumentos Inteligentes, interface Homem-Máquina, robótica industrial e acionamentos elétricos.
- 4.
+4.Os sistemas embarcados são compostos por por uma CPU, uma memória  e entrdadas e saídas para o ambiente externo. O CPU é responsável por executar o programa desenvolvido no ambiente de trabalho,o bloco de memória mantem informações sobre as entradas, sobre as saídas e
+sobre memórias internas utilizadas no programa, e o módulo de Entradas e Saídas é responsável pela aquisição de dados e pela
+atuação no processo. São as entradas que transformam os sinais provenientes de sensores em informações válidas a serem utilizadas pela CPU. Além disso, as saídas são utilizadas para o envio de comandos de atuação provenientes da CPU. 
+5.O MSP430  efetua operação em Tempo-Real, tem baixo custo de fabricação e necessita de uma baixa potência e a empresa Texas Instruments fornece o Starter Kit que contém tanto o manual de programação com o software apropriado como também a interface que possibilita a programação individual de cada microprocessador da série MSP430.
