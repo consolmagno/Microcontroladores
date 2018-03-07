@@ -1,1 +1,6 @@
-1.
+1. São computadores completos utlizados para um propósito pré-defenido dependendo da aplicação desejada.
+2. Os microprocessados fazem parte dos microcontroladores. Dessa forma, são responsáveis pelas realizações das instruções de um sistema de processadores disponíveis ao sistema operacional.
+3.a) Motor, multimídia, vidros elétricos, farol, controlador de parabrisas e o acionamento de airbag.
+  b) Microondodas, maquina de lavar, geladeira e maquina de secar.
+  c)Instrumentos Inteligentes, interface Homem-Máquina, robótica industrial e acionamentos elétricos.
+ 4.
