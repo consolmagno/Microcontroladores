@@ -33,7 +33,12 @@ void main(void){
 	PIDIR = LED1 + LED2;
         for (;;)
         {
-        
-        }
+		if(P1IN & BTN == 0)
+			P1OUT= LED1 + LED2;
+			P1OUT ^= LED1 + LED2;
+		else 
+			P1OUT &= ~(LED1 + LED2);
+
+	}
 }
  
