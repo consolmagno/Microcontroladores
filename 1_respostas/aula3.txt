@@ -1,4 +1,5 @@
-1. a) P1DIR |= BIT0;
+1.
+   a) P1DIR |= BIT0;
    b) P1DIR |= BIT1 + BIT0;
    c) P1DIR &= ~BIT3;
    d) P1DIR &= ~(BIT4 + BIT3);
@@ -7,6 +8,51 @@
       P1DIR |= BIT3 + BIT2 + BIT1 + BIT0;
 
 2.
+#include <msp430fr2433.h>
+#define LED1 BIT0
+#define LED2 BIT6
+
+int t;
+void main(void){
+	WDTCTL = WDTPW |WDTHOLD;
+	P1OUT = 0;
+	PIDIR = LED1 + LED2;
+	while (1)
+        {
+        	for(t=0;t<1000;t++)
+		P1OUT = 1;
+		for(t=0;t<1000;t++) 
+		P1OUT = 0;
+        }
+}
+
+3.
+#include <msp430fr2433.h>
+#define BTN BIT2
+#define LED1 BIT0
+#define LED2 BIT6
+
+void main(void){
+	WDTCTL = WDTPW |WDTHOLD;
+	P1OUT = 0;
+	PIDIR = LED1 + LED2;
+        for (;;)
+        {
+        	if(P1IN & BTN == 0)
+			P1OUT= LED1 + LED2;
+			P1OUT= LED1 + LED2;
+
+			
+		else 
+			P1OUT &= ~(LED1 + LED2);
+
+	}
+}
+
+4.
+P1OUT ^= LED1 + LED2;
+
+5.
 #include <msp430fr2433.h>
 #define LED1 BIT0
 #define LED2 BIT6
@@ -21,7 +67,7 @@ void main(void){
         }
 }
  
-3.
+6.
 #include <msp430fr2433.h>
 #define BTN BIT2
 #define LED1 BIT0
