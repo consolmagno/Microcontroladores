@@ -1,0 +1,23 @@
+1.
+a) MOV.W #0,R4
+b) MOV.W #1,R11
+   ADD.W R11,R5
+c) MOV.W #1,R12
+   SUB.W R12,R6
+d) MOV.W #2,R13
+   ADD.W R13,R7
+e) MOV.W #2,R14
+   SUB.W R14,R8
+2.
+a) CLR.W R4
+b) INC.W R5
+c) DEC.W R6
+d) INCD.W R7
+e) DECD.W R8
+
+3.
+a)
+b)
+c)
+d)
+e)
