@@ -35,4 +35,13 @@ LOOP: MOV R7,R12
 EXIT
 
 4.
+CLR R7
+FOR_LOOP: CMP #100;R7
+	     JEQ FOR_END
+	     ADD R7,R7
+             MOV R7,R7(R9)
+             INC R7
+             JMP FOR_LOOP
+FOR_END 
+
 
