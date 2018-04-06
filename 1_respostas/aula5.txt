@@ -44,4 +44,13 @@ FOR_LOOP: CMP #100;R7
              JMP FOR_LOOP
 FOR_END 
 
+5.
+MOV.W #99,R7
+FOR_LOOP: CMP #0;R7
+	     JLE FOR_END
+	     ADD R7,R7
+             MOV.W R7,R7(R9)
+             DEC R7
+             JMP FOR_LOOP
+FOR_END 
 
