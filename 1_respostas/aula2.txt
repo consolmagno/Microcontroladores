@@ -5,12 +5,12 @@
 4. A arquitetura de Harvard possui como vantagem a dupla ligação às memórias de dados e programa (código), permitindo assim que o processador leia uma instrução ao mesmo tempo que faz um acesso à memória de dados e a desvantagem é que ela é mais complexa que a Von Neumann. Já a arquitetura de Von Neumann possui como vantagem de ser mais simples, entretanto é mais lenta (menos eficiente). 
 5.a) Little Endian 
     0X0200 - CD
-		0X0201 - AB
-		0X0202 - 51
-		0X0203 - 80
+    0X0201 - AB
+    0X0202 - 51
+    0X0203 - 80
   b) Big Endian
-	  0X0200 - CD
-		0X01FF - AB
-		0X01FE - 51
-		0X01FD - 80
+    0X0200 - CD
+    0X01FF - AB
+    0X01FE - 51
+    0X01FD - 80
 6. Deve-se utilizar o carry ("vai um"), o qual passa o restante da soma para outro registrador. Assim como um registrador fica responsável para indicar se ocorreu overflow. 
