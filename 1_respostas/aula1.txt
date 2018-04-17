@@ -1,5 +1,5 @@
 1. São computadores completos utlizados para um propósito pré-defenido dependendo da aplicação desejada.
-2. Os microprocessados fazem parte dos microcontroladores. Dessa forma, são responsáveis pelas realizações das instruções de um sistema embarcado. Os microprocesadores realizam diversos tipos de comunicações durante a sua operação, das quais podem ser internas ao chip (busca de instruções ou dados) ou Externas (Armazenamento de dados coletados , sistema processador + memória e entre processadores). 
+2. Os microprocessados utilizam microcontroladores. Dessa forma, são responsáveis pelas realizações das instruções de um sistema embarcado. Os microprocesadores realizam diversos tipos de comunicações durante a sua operação, das quais podem ser internas ao chip (busca de instruções ou dados) ou Externas (Armazenamento de dados coletados , sistema processador + memória e entre processadores). 
 3.a) Motor, multimídia, vidros elétricos, farol, controlador de parabrisas e o acionamento de airbag.
   b) Microondodas, maquina de lavar, geladeira e maquina de secar.
   c)Instrumentos Inteligentes, interface Homem-Máquina, robótica industrial e acionamentos elétricos.
