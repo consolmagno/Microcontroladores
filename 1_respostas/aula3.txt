@@ -11,8 +11,9 @@
 #define LED1 BIT0
 #define LED2 BIT6
 
-int t;
+
 void main(void){
+int t=0;
 	WDTCTL = WDTPW |WDTHOLD;
 	P1OUT = 0;
 	PIDIR = LED1 + LED2;
@@ -35,14 +36,12 @@ void main(void){
 	WDTCTL = WDTPW |WDTHOLD;
 	P1OUT = 0;
 	PIDIR = LED1 + LED2;
-        for (;;)
+        for (t=0;t<1000;t++)
         {
         	if(P1IN & BTN == 0)
 			P1OUT= LED1 + LED2;
 			P1OUT &= ~(LED1 + LED2);
-			P1OUT= LED1 + LED2;
-
-			
+			P1OUT= LED1 + LED2;	
 		else 
 			P1OUT &= ~(LED1 + LED2);
 
@@ -58,13 +57,18 @@ void main(void){
 #define LED1 BIT0
 #define LED2 BIT6
 
+
 void main(void){
+        int t = 0;
+
 	WDTCTL = WDTPW |WDTHOLD;
-	P1OUT = 0;
+	P1OUT = LED1 + LED2;
 	PIDIR = LED1 + LED2;
-	for (;;)
+	while (1)
         {
-        	P1OUT ^= LED1 + LED2;
+          P1OUT ^= LED1 + LED2;
+        for(t=0;t<1000;t++)
+		
         }
 }
 
@@ -78,7 +82,7 @@ void main(void){
 	WDTCTL = WDTPW |WDTHOLD;
 	P1OUT = 0;
 	PIDIR = LED1 + LED2;
-        for (;;)
+        for (t=0;t<1000;t++)
         {
         	if(P1IN & BTN == 0)
 			P1OUT= LED1 + LED2;
