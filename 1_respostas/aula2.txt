@@ -9,8 +9,8 @@
     0X0202 - 51
     0X0203 - 80
   b) Big Endian
-    0X0200 - CD
-    0X01FF - AB
-    0X01FE - 51
-    0X01FD - 80
+    0X0200 - 80
+    0X0201 - 51
+    0X0202 - AB
+    0X0203 - CD
 6. Deve-se utilizar o carry ("vai um"), o qual passa o restante da soma para outro registrador. Assim como um registrador fica responsável para indicar se ocorreu overflow. 
