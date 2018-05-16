@@ -1,4 +1,5 @@
-1)#include <msp430.h> 
+1)
+#include <msp430.h> 
 #define LED1 BIT0
 #define LED2 BIT6
 
@@ -7,7 +8,7 @@ int main(void)
 	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
 	
 	P1DIR = LED1 + LED2;
-	P1OUT = 0; // inicia em nível lógico baixo
+	P1OUT = 0; // inicia em nÃ­vel lÃ³gico baixo
 
 	while(1){
 	    P1OUT = LED1 + LED2;    // liga
@@ -28,7 +29,7 @@ int main(void)
     WDTCTL = WDTPW | WDTHOLD;   // stop watchdog timer
 
     P1DIR = LED1 + LED2;
-    P1OUT = 0; // inicia em nível lógico baixo
+    P1OUT = 0; // inicia em nÃ­vel lÃ³gico baixo
 
     while(1){
         P1OUT = LED1 + LED2;    // liga
