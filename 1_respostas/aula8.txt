@@ -41,3 +41,87 @@ int main(void)
 }
 
 3)
+#include <msp430.h>
+#define BTN BIT2
+#define LED1 BIT0
+#define LED2 BIT6
+
+void main(void){
+    WDTCTL = WDTPW |WDTHOLD;
+    P1DIR = LED1 + LED2;
+    P1OUT = 0;
+
+    P2DIR &= ~BTN;
+    P2REN |= BTN;
+    P2OUT |= BTN;
+
+    while(1)
+        {
+            if(P1IN & BTN == 0)
+            P1OUT ^= LED1 + LED2;
+
+        else
+            P1OUT &= ~(LED1 + LED2);
+
+    }
+}
+
+4)
+#include <msp430.h>
+#define BTN BIT2
+#define LED1 BIT0
+#define LED2 BIT6
+
+void main(void){
+    WDTCTL = WDTPW |WDTHOLD;
+    P1DIR = LED1 + LED2;
+    P1OUT = 0;
+
+    P2DIR &= ~BTN;
+    P2REN |= BTN;
+    P2OUT |= BTN;
+
+    while(1)
+        {
+            if(P1IN & BTN == 0)
+            piscar_leds()
+
+        else
+            P1OUT &= ~(LED1 + LED2);
+
+    }
+}
+void piscar_led(){
+    while(1){
+        P1OUT = LED1 + LED2;    // liga
+        __delay_cycles(1000000);
+        P1OUT = 0;             // desliga
+        __delay_cycles(1000000);
+    }
+}
+
+5)
+#include <msp430.h>
+#define BTN BIT2
+#define LED1 BIT0
+#define LED2 BIT6
+
+void main(void){
+
+    WDTCTL = WDTPW | WDTHOLD;
+    PM5CTL0 &= ~LOCKLPM5;
+    P1OUT |= LEDS;
+    P1DIR |= LEDS;
+    P2DIR &= ~BTN;
+    P2REN |= BTN;
+    P2OUT |= BTN;
+    P2IES |= BTN;
+    P2IE |= BTN;
+    _BIS_SR(GIE);
+
+ while(1){
+        P1OUT = LED1 + LED2;    // liga
+        __delay_cycles(2000000);
+        P1OUT = 0;             // desliga
+        __delay_cycles(1000000);
+    }
