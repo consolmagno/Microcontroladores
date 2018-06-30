@@ -1,0 +1,24 @@
+1) Ic = B * Ib
+   4 = 100 * Ib
+   Ib= 0,04 A
+A corrente é maior que a corrente permitida, sendo assim é necessario usar um Par Darlington
+
+  Ic= B^2 * Ib
+  4 = 100 ^2 * Ib
+  Ib= 0,0004
+
+Rb = ( Vcc - 2*Vbe)/ Ib
+Rb = ( 3 - 2*(0,7))/ 0,0004
+Rb = 4000 
+
+2) Ic = B * Ib
+   1 = 120 * Ib
+   Ib = 0,0083 A (ok)
+
+  Rb = (Vcc - Vbe)/ Ib
+  Rb= (3,5 - 0,7)/ 0,00083
+  Rb= 337,35
+
+3)
+
+
