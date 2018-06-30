@@ -1,0 +1,17 @@
+1)
+void Debounce_button(int BIT){
+    unsigned int counter = 1000; // 1ms debouncing
+
+        while((P1IN & BIT) == 0){  
+            if(counter == 0)
+                return  1;
+            else
+                counter --;
+        }
+        if(P1IN & BIT){
+            return  0;
+        }
+            counter = 1000;
+}
+
+2)
