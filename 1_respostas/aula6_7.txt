@@ -8,55 +8,87 @@ x = (x + s/ x /2);
 return x;
 
 b.
-Raiz_Quadrada:    cmp #2, R15
-                  jge Raiz_n„o_trivial
-Raiz_n„o_trivial: push R5
-                  push R6
-		  mov R15,R5
-	          inc R5
-                  rra R5
- 		  clr R6
-Raiz_loop:        comp #10000, R6
-	          jeq Raiz_end
-	          push R15
-	          mov R5, R14
-                  call #div
-                  add R1, R5
-                  rra R5
-                  pop R15
-                  inc R6
-                  jump Raiz_loop
-Raiz_end:         mov R5, R15
-                  pop R6
-                  pop R5
-                  ret
-
+Raiz_Quadrada:    cmp #2, R15;
+                  jge Raiz_n√£o_trivial;
+Raiz_n√£o_trivial: push R5;
+                  push R6;
+		  mov R15,R5;
+	          inc R5;
+                  rra R5;
+ 		  clr R6;
+Raiz_loop:        comp #10000, R6;
+	          jeq Raiz_end;
+	          push R15;
+	          mov R5, R14;
+                  call #div;
+                  add R1, R5;
+                  rra R5;
+                  pop R15;
+                  inc R6;
+                  jump Raiz_loop;
+Raiz_end:         mov R5, R15;
+                  pop R6;
+                  pop R5;
+                  ret;
+		  
 2)
 a.
+int Potencia(int x, int N){
+    int pot = x;
+    if (N = 0) return 1;
+    while (N != 1){
+	    pot = pot * x;
+        N--;
+	}
+	return pot;
+}
+
 b.
+Potencia:             cmp R14, #0;
+                      jne Potencia_nao_trivial;
+                      mov.w #1, R15; 
+                      ret
+Potencia_nao_trivial: push R6 ; guarda R6 na pilha
+                      mov.w R14, R6 ; r6 = r14 = n
+Looping:              cmp R6, #1 ; sai do Loop se n = 1
+                      jeq FimLoop;
+                      call Mult ; multiplica R15 por x
+                      dec.w R6 ; n--
+                      jmp Loop;
+FimLoop:              pop R6 ; tira R6 da pilha
+                      ret;
+Mult:                 mov.w R15, R14;
+                      mov.w R15, R13;
+                      clr.w R15;
+loopingMult:          add.w R13, R15;
+                      dec.w R14;
+                      cmp R14, #0 ; se R14 > 0, fica no loop
+                      jl LoopingMult;
+FimMult:
+                      ret;
 
 3)
-CalculaDiv: mov.w #0,R12  ; Valor tempor·rio da divis„o
-	    mov.w R15,R13 ; R13 È o registrador tempor·rio utilizado nas mini-divisoes.
-	    sub.w #0,R13  ; verifica a divis„o por zero.
+CalculaDiv: mov.w #0,R12  ; Valor tempor√°rio da divis√£o
+	    mov.w R15,R13 ; R13 √© o registrador tempor√°rio utilizado nas mini-divisoes.
+	    sub.w #0,R13  ; verifica a divis√£o por zero.
 	    jz FimDiv2    ; se dividir por zero, retorna FFFF.
 looping:    sub.w R13,R14 ; subtrai o numerador do denominador, para testar.
-	    jn FimDiv     ; divisao termina quando a subtraÁ„o der negativa.
-	    inc.w R12     ; caso contrario, incrementa o valor da divisao tempor·ria.
+	    jn FimDiv     ; divisao termina quando a subtra√ß√£o der negativa.
+	    inc.w R12     ; caso contrario, incrementa o valor da divisao tempor√°ria.
 	    jmp looping   ; retorna ao looping
-FimDiv:     mov.w R12,R15 ; transmite o valor da divis„o para R15
+FimDiv:     mov.w R12,R15 ; transmite o valor da divis√£o para R15
 	    ret	    
 FimDiv2:    mov.w #FFFFh, R15 ; transmite o valor "INFINITO" para R15
 	    ret
 
 4)
-CalculaRDiv: mov.w R15,R13 ; R13 È o registrador tempor·rio utilizado nas mini-divisoes.
-	     mov.w R15,R11 ; Valor do resto para quando a divis„o È por zero.
-	     sub.w #0,R13  ; verifica se a divis„o È por zero.
-	     jz FimDiv     ; se dividir por zero, o resto È o prÛprio R15.
-looping:     mov.w R13,R11 ; resto da divis„o ser· em R11, antes de subtrair o ultimo valor.
+CalculaRDiv: mov.w R15,R13 ; R13 √© o registrador tempor√°rio utilizado nas mini-divisoes.
+	     mov.w R15,R11 ; Valor do resto para quando a divis√£o √© por zero.
+	     sub.w #0,R13  ; verifica se a divis√£o √© por zero.
+	     jz FimDiv     ; se dividir por zero, o resto √© o pr√≥prio R15.
+looping:     mov.w R13,R11 ; resto da divis√£o ser√° em R11, antes de subtrair o ultimo valor.
 	     sub.w R14,R13 ; R13 = R13 - R14 subtrai o numerador do denominador, para testar...
-	     jn FimDiv     ; divisao termina quando a subtraÁ„o der negativa.
+	     jn FimDiv     ; divisao termina quando a subtra√ß√£o der negativa.
 	     jmp looping   ; FOR
 FimDiv:      mov.w R11,R15 ; transmite o valor do resto da div para R15
              ret  
@@ -78,16 +110,16 @@ int Primalidade(unsigned int x){
 	}
 
 b.
-Primalidade: mov.w #1,R14	; R14 È o valor do Ìndice (i = 1).
-	     mov.w #0,R12	; R12 È o registrador que conta as vezes que o resto È zero.
-looping:     push.w R15		; Joga o valor de R15 (N˙mero analisado) para a pilha para usar a funÁ„o #CalculaRST.
+Primalidade: mov.w #1,R14	; R14 √© o valor do √≠ndice (i = 1).
+	     mov.w #0,R12	; R12 √© o registrador que conta as vezes que o resto √© zero.
+looping:     push.w R15		; Joga o valor de R15 (N√∫mero analisado) para a pilha para usar a fun√ß√£o #CalculaRST.
              call #CalculaRST
 	     inc.w R14		; i++ 
-	     cmp #0,R15		; R15, como È resultado da funÁ„o CalculaRST, indica o resto da divis„o de R15/R14. 
-	     jne Condition	; if(R15 == 0) -> R12 ++ //indica se o resto È zero.
+	     cmp #0,R15		; R15, como √© resultado da fun√ß√£o CalculaRST, indica o resto da divis√£o de R15/R14. 
+	     jne Condition	; if(R15 == 0) -> R12 ++ //indica se o resto √© zero.
 	     inc.w R12		; R12 ++ ;
-Condition:   pop.w R15          ; Resgata o valor de R15, que È o n˙mero a ser analisado.
-	     cmp.w R14,R15	;  COMP(R14-R15) Quando i > R15, ent„o a an·lise terminou.
+Condition:   pop.w R15          ; Resgata o valor de R15, que √© o n√∫mero a ser analisado.
+	     cmp.w R14,R15	;  COMP(R14-R15) Quando i > R15, ent√£o a an√°lise terminou.
 	     jn FIM
 	     jmp looping	; FOR 
 FIM:         cmp #2,R12         ; if(R12 == 2){ 
@@ -96,3 +128,73 @@ FIM:         cmp #2,R12         ; if(R12 == 2){
 	     jmp false		;	R15 = 0;
 true:	     mov.w #1,R15	;      }
 false:	     ret 
+
+
+6)
+unsigned long long DuploFatorial(unsigned long long n);{
+	if (n < 2){
+	return 1;
+	}
+	else{
+	return n * DuploFatorial(n - 2);
+	}
+}
+
+7)
+a.
+double ExpTaylor(double x);{
+	int sum = 0;
+	int n
+	for ( int i = 19; i>0; i--){
+		sum+= (x**n/fatorial(n));
+
+	}
+	return sum;
+	}
+
+*/
+unsigned long lond DuploFatorial.c
+/*
+
+b.
+Exp_taylor:        push.w R15;
+                   mov.w #1, R4;
+                   mov.w #19, R14;
+For_exp_taylor:    Comp #0, R14;
+                   jne end_for_exp_taylor;
+                   mov.w R4, R15;
+                   push.w R14;
+                   call Div_Unsigned;
+                   mov.w R15, R5;
+                   mov.w R14, R6;
+                   pop.w R14;
+                   pop.w R15;
+                   call Mult_Unsigned;
+                   add.w #1, R15;
+                   dec R14;
+                   jmp For_exp_taylor;
+end_for_exp_taylor:ret;
+
+8)
+
+
+9)
+                         Clr R12;
+                         Clr R11;
+For_produto_escalar:     Cmp R13, R12;
+		         Jge End_for_produto_escalar;
+                         Push R15;
+                         Push R14;
+                         Add.w R12, R15;
+                         Add.w R12, R14;
+                         Mov.w 0(R15), R15;
+                         Mov.w 0(R14), R14;
+                         Call Mult_Signed;
+                         Add.w R15, R11;
+                         Pop R15;
+                         Pop R14;
+                         Inc R12;
+                         Inc R12;
+                         Jmp For_produto_escalar;
+End_for_produto_escalar: Mov.w R11, R15;
+                         Ret;
