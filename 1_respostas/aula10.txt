@@ -98,4 +98,23 @@ while(1)
 }
 
 
-
+7)
+int atraso(int unsigned volatile i){
+	while((i--)>0)
+}
+int main(){
+	WDTCTL = WDTPW|WDTHOLD;
+	int i = 0;
+	
+	
+	while(1){
+		P1DIR|=BIT7;
+    		P1OUT|=BIT7;
+		EscreveDigito(i);
+    		P1DIR|=BIT0;
+		P1OUT|=BIT0;
+		EscreveDigito(i);
+		atraso(1000);
+	}
+	
+} 
